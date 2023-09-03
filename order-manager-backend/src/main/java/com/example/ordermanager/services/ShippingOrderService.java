@@ -18,8 +18,8 @@ public class ShippingOrderService {
 
     public void generateShippingOrdes(){
         List<PurchaseOrderModel> purchaseOrderModels = purchaseOrderService.getUnshippedPurchaseOrders();
+
         if(purchaseOrderModels.isEmpty()){
-            System.out.println("No hay ordenes de compra para enviar");
             return;
         }
 

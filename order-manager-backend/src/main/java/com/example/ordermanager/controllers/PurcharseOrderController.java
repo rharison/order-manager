@@ -36,4 +36,9 @@ public class PurcharseOrderController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Purchase order not found");
         }
     }
+
+    @GetMapping("/purchase-orders/report")
+    public ResponseEntity<Iterable<PurchaseOrderModel>> getReportPurchaseOrdersWithHighAmount() {
+        return ResponseEntity.status(HttpStatus.OK).body(purchaseOrderService.getReportPurchaseOrdersWithHighAmount());
+    }
 }

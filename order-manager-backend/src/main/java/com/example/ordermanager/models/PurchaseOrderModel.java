@@ -12,9 +12,9 @@ public class PurchaseOrderModel extends BaseEntity {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    Integer products_amount;
-    Integer surcharge_amount;
-    Integer total_amount;
+    Integer productsAmount;
+    Integer surchargeAmount;
+    Integer totalAmount;
 
     Boolean isShipped = false;
 
@@ -25,33 +25,33 @@ public class PurchaseOrderModel extends BaseEntity {
     public PurchaseOrderModel() {}
 
     public PurchaseOrderModel(Integer products_amount, Integer surcharge_amount, Integer total_amount) {
-        this.products_amount = products_amount;
-        this.surcharge_amount = surcharge_amount;
-        this.total_amount = total_amount;
+        this.productsAmount = products_amount;
+        this.surchargeAmount = surcharge_amount;
+        this.totalAmount = total_amount;
     }
 
-    public Integer getProducts_amount() {
-        return products_amount;
+    public Integer getProductsAmount() {
+        return productsAmount;
     }
 
-    public void setProducts_amount(Integer products_amount) {
-        this.products_amount = products_amount;
+    public void setProductsAmount(Integer productsAmount) {
+        this.productsAmount = productsAmount;
     }
 
-    public Integer getSurcharge_amount() {
-        return surcharge_amount;
+    public Integer getSurchargeAmount() {
+        return surchargeAmount;
     }
 
-    public void setSurcharge_amount(Integer surcharge_amount) {
-        this.surcharge_amount = surcharge_amount;
+    public void setSurchargeAmount(Integer surchargeAmount) {
+        this.surchargeAmount = surchargeAmount;
     }
 
-    public Integer getTotal_amount() {
-        return total_amount;
+    public Integer getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setTotal_amount(Integer total_amount) {
-        this.total_amount = total_amount;
+    public void setTotalAmount(Integer totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public Set<PurcharseOrderProductModel> getPurcharseOrderProduct() {

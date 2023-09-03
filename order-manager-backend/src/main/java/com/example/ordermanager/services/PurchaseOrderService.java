@@ -33,9 +33,9 @@ public class PurchaseOrderService {
         var surchargeAmount = productsAmount * SURCHAGE_PERCENTAGE / 100;
         var totalAmount = productsAmount + surchargeAmount;
 
-        purchaseOrderModel.setProducts_amount(productsAmount);
-        purchaseOrderModel.setSurcharge_amount(surchargeAmount);
-        purchaseOrderModel.setTotal_amount(totalAmount);
+        purchaseOrderModel.setProductsAmount(productsAmount);
+        purchaseOrderModel.setSurchargeAmount(surchargeAmount);
+        purchaseOrderModel.setTotalAmount(totalAmount);
 
         products.forEach(product -> {
             var purchaseOrderProductModel = new PurcharseOrderProductModel(
@@ -64,5 +64,9 @@ public class PurchaseOrderService {
 
     public List<PurchaseOrderModel> getUnshippedPurchaseOrders() {
         return purchaseOrderRepository.findByIsShippedFalse();
+    }
+
+    public List<PurchaseOrderModel> getReportPurchaseOrdersWithHighAmount() {
+        return purchaseOrderRepository.findByTotalAmountGreaterThan(5000);
     }
 }
