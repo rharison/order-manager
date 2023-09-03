@@ -4,12 +4,14 @@ import com.example.ordermanager.dtos.PurchaseOrderRecordDto;
 import com.example.ordermanager.models.PurchaseOrderModel;
 import com.example.ordermanager.repositories.PurchaseOrderRepository;
 import com.example.ordermanager.services.PurchaseOrderService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @RestController
@@ -38,7 +40,9 @@ public class PurcharseOrderController {
     }
 
     @GetMapping("/purchase-orders/report")
-    public ResponseEntity<Iterable<PurchaseOrderModel>> getReportPurchaseOrdersWithHighAmount() {
-        return ResponseEntity.status(HttpStatus.OK).body(purchaseOrderService.getReportPurchaseOrdersWithHighAmount());
+    public void getReportPurchaseOrdersWithHighAmount(HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition","attachment; filename=\"purcharse-orders-with-high-amount.csv\"");
+        purchaseOrderService.getReportPurchaseOrdersWithHighAmount(servletResponse.getWriter());
     }
 }

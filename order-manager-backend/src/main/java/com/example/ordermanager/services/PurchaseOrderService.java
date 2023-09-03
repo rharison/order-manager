@@ -6,13 +6,24 @@ import com.example.ordermanager.models.PurcharseOrderProductModel;
 import com.example.ordermanager.models.PurchaseOrderModel;
 import com.example.ordermanager.repositories.PurchaseOrderProductRepository;
 import com.example.ordermanager.repositories.PurchaseOrderRepository;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
+import java.io.IOException;
+import java.io.Writer;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+import java.util.logging.Logger;
+
+import static java.lang.System.getLogger;
 
 @Service
 public class PurchaseOrderService {
@@ -66,7 +77,22 @@ public class PurchaseOrderService {
         return purchaseOrderRepository.findByIsShippedFalse();
     }
 
-    public List<PurchaseOrderModel> getReportPurchaseOrdersWithHighAmount() {
-        return purchaseOrderRepository.findByTotalAmountGreaterThan(5000);
+    public void getReportPurchaseOrdersWithHighAmount(Writer writer) {
+        List<PurchaseOrderModel> purchaseOrderModels = purchaseOrderRepository.findByTotalAmountGreaterThan(5000);
+
+        if(purchaseOrderModels.isEmpty()) {
+            return;
+        }
+
+        try (CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)){
+            csvPrinter.printRecord("Codigo Pedido", "Valor do Pedido");
+            NumberFormat formatBrlCurrency = DecimalFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+            for (PurchaseOrderModel purchaseOrder : purchaseOrderModels) {
+                csvPrinter.printRecord(purchaseOrder.getId(), formatBrlCurrency.format(purchaseOrder.getTotalAmount() / 100.0));
+            }
+        } catch (IOException e) {
+            System.out.println("Error while writing CSV file: " + e.getMessage());
+        }
     }
 }
