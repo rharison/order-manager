@@ -16,6 +16,8 @@ public class PurchaseOrderModel extends BaseEntity {
     Integer surcharge_amount;
     Integer total_amount;
 
+    Boolean isShipped = false;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PurcharseOrderProductModel> purcharseOrderProduct = new HashSet<>();
@@ -58,6 +60,14 @@ public class PurchaseOrderModel extends BaseEntity {
 
     public void setPurcharseOrderProduct(Set<PurcharseOrderProductModel> purcharseOrderProduct) {
         this.purcharseOrderProduct = purcharseOrderProduct;
+    }
+
+    public Boolean getShipped() {
+        return isShipped;
+    }
+
+    public void setShipped(Boolean shipped) {
+        isShipped = shipped;
     }
 
     public void addPurcharseOrderProduct(PurcharseOrderProductModel purcharseOrderProductModel) {

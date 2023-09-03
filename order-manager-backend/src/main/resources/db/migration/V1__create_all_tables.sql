@@ -10,7 +10,8 @@ CREATE TABLE "purchase_orders" (
     "id" SERIAL PRIMARY KEY,
     "products_amount" INTEGER NOT NULL ,
     "surcharge_amount" INTEGER NOT NULL,
-    "total_amount" INTEGER NOT NULL
+    "total_amount" INTEGER NOT NULL,
+    "is_shipped" BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE "purchase_orders_products" (
