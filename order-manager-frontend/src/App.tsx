@@ -6,6 +6,7 @@ import { CartProvider } from "./context/CartContext";
 import { Checkout } from "./pages/Checkout";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Orders } from "./pages/Orders";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<LayoutApplication />} >
             <Route path="/products" element={<Products />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<Orders />} />
             <Route path="/admin/orders" element={<></>} />
           </Route>
         </Routes>

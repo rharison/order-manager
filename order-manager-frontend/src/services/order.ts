@@ -11,4 +11,15 @@ export const createOrder = async (payload: OrderPayload): Promise<OrderResponse>
         toast.error('Oops! Algo deu errado ao criar o pedido. Tente novamente.')
         throw error
     }
-}
+};
+
+export const getOrders = async (): Promise<OrderResponse[]> => {
+    try {
+        const { data } = await axiosInstance.get('/purchase-orders')
+
+        return data
+    } catch (error) {
+        toast.error('Oops! Algo deu errado ao buscar os pedidos. Tente novamente.')
+        throw error
+    }
+};

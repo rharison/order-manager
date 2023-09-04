@@ -9,6 +9,7 @@ import { formatMoneyCents } from "../../utils/money";
 type CardProductCheckoutProps = {
     product: Product;
     qty: number;
+    viewMode?: boolean;
 };
 
 const defaultStyleButon = {
@@ -18,7 +19,7 @@ const defaultStyleButon = {
     }
 };
 
-export const CardProductCheckout = ({ product, qty }: CardProductCheckoutProps) => {
+export const CardProductCheckout = ({ product, qty, viewMode }: CardProductCheckoutProps) => {
     const { addProduct, productAlreadyExistsInCart, removeProduct } = useContext(CartDispatchContext);
 
     return (
@@ -42,35 +43,37 @@ export const CardProductCheckout = ({ product, qty }: CardProductCheckoutProps) 
                         </ProductPrice>
                     </ProductPriceContainer>
                 </ContainerText>
-                <ContainerActions>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            maxWidth: '10rem',
-                        }}
-                    >
-                        <Button
-                            sx={defaultStyleButon}
-                            variant="contained"
-                            fullWidth
-                            onClick={() => addProduct(product)}
+                {!viewMode &&
+                    <ContainerActions>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                maxWidth: '10rem',
+                            }}
                         >
-                            +
-                        </Button>
-                        <TextQtyProduct>
-                            {productAlreadyExistsInCart(product)?.qty}
-                        </TextQtyProduct>
-                        <Button
-                            sx={defaultStyleButon}
-                            variant="contained"
-                            fullWidth
-                            onClick={() => removeProduct(product)}
-                        >
-                            -
-                        </Button>
-                    </Box>
-                </ContainerActions>
+                            <Button
+                                sx={defaultStyleButon}
+                                variant="contained"
+                                fullWidth
+                                onClick={() => addProduct(product)}
+                            >
+                                +
+                            </Button>
+                            <TextQtyProduct>
+                                {productAlreadyExistsInCart(product)?.qty}
+                            </TextQtyProduct>
+                            <Button
+                                sx={defaultStyleButon}
+                                variant="contained"
+                                fullWidth
+                                onClick={() => removeProduct(product)}
+                            >
+                                -
+                            </Button>
+                        </Box>
+                    </ContainerActions>
+                }
             </InfoContainer>
         </Container>
     )

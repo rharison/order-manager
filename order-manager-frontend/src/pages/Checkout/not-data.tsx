@@ -8,7 +8,11 @@ const defaultStyleButon = {
     }
 };
 
-export const NotData = () => {
+type NotDataProps = {
+    message?: string;
+};
+
+export const NotData = ({ message = "Oops! Voce não tem nenhum item no carrinho." }: NotDataProps) => {
     const navigate = useNavigate();
 
     return (
@@ -35,7 +39,7 @@ export const NotData = () => {
                 }
             }}
         >
-            <span>Oops! Voce não tem nenhum item no carrinho.</span>
+            <span>{message}</span>
             <img
                 src="/not-data.svg"
             />

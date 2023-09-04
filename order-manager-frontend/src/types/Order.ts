@@ -18,7 +18,7 @@ type purcharseOrderProductItem = {
 
 export type OrderResponse = {
     id: number;
-    productAmount: number;
+    productsAmount: number;
     surchargeAmount: number;
     totalAmount: number;
     shipped: boolean;

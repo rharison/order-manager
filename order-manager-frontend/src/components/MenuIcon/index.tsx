@@ -2,10 +2,12 @@ import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useNavigate } from "react-router-dom";
 
 export const MenuIconHeader = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -62,7 +64,12 @@ export const MenuIconHeader = () => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                    onClick={() => {
+                        navigate('/orders');
+                        handleClose()
+                    }}
+                >
                     <ListItemIcon>
                         <ShoppingCartIcon fontSize="small" />
                     </ListItemIcon>

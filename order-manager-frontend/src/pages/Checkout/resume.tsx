@@ -36,7 +36,7 @@ export const Resume = () => {
 
         await createOrder(payload);
         clearCart();
-        navigate('/products');
+        navigate('/orders');
     }
 
     return (
