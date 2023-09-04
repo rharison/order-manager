@@ -3,6 +3,7 @@ import { useState } from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from "react-router-dom";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 export const MenuIconHeader = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -74,6 +75,17 @@ export const MenuIconHeader = () => {
                         <ShoppingCartIcon fontSize="small" />
                     </ListItemIcon>
                     Meus Pedidos
+                </MenuItem>
+                <MenuItem
+                    onClick={() => {
+                        navigate('/admin/orders');
+                        handleClose()
+                    }}
+                >
+                    <ListItemIcon>
+                        <AdminPanelSettingsIcon fontSize="small" />
+                    </ListItemIcon>
+                    Painel Admin
                 </MenuItem>
             </Menu>
         </>

@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrderModel, Long> {
     List<PurchaseOrderModel> findByIsShippedFalse();
-    List<PurchaseOrderModel> findByTotalAmountGreaterThan(Integer totalAmount);
+    List<PurchaseOrderModel> findByTotalAmountGreaterThanEqual(Integer totalAmount);
 
 }

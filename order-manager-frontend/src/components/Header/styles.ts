@@ -11,6 +11,7 @@ export const Container = styled.header`
     position: sticky;
     top: 0px;
     background-color: #fff;
+    z-index: 1000;
 
     & > img {
         height: 50px;

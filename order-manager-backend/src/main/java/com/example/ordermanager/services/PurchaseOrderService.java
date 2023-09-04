@@ -78,7 +78,7 @@ public class PurchaseOrderService {
     }
 
     public void getReportPurchaseOrdersWithHighAmount(Writer writer) {
-        List<PurchaseOrderModel> purchaseOrderModels = purchaseOrderRepository.findByTotalAmountGreaterThan(5000);
+        List<PurchaseOrderModel> purchaseOrderModels = purchaseOrderRepository.findByTotalAmountGreaterThanEqual(50000);
 
         if(purchaseOrderModels.isEmpty()) {
             return;

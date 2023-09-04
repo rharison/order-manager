@@ -18,8 +18,7 @@ public class ScheduledShippingOrders {
     private static final Logger log = (Logger) LoggerFactory.getLogger(ScheduledShippingOrders.class);
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-//    @Scheduled(fixedDelay = 600000)
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedDelay = 600000)
     public void reportCurrentTime() {
         shippingOrderService.generateShippingOrdes();
     }
