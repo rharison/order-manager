@@ -21,6 +21,6 @@ public class ScheduledShippingOrders {
 //    @Scheduled(fixedDelay = 600000)
     @Scheduled(fixedRate = 30000)
     public void reportCurrentTime() {
-        log.info("The time is now kkkkkkkkkkk {}", dateFormat.format(new Date())); shippingOrderService.generateShippingOrdes();
+        shippingOrderService.generateShippingOrdes();
     }
 }
