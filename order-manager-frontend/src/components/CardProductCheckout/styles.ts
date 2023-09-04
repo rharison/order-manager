@@ -6,6 +6,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 1rem;
     height: 160px;
+    width: 100%;
 `;
 
 export const InfoContainer = styled.div`
@@ -44,4 +45,15 @@ export const ProductSubTotal = styled.span`
     font-weight: 500;
 `;
 
-export const ContainerActions = styled.div``;
+export const ContainerActions = styled.div`
+    width: 100%;
+`;
+
+export const ContainerActionsResume = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+    margin-top: 2rem;
+`;

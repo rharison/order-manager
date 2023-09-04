@@ -4,6 +4,8 @@ import { LayoutApplication } from "./layout";
 import { Products } from "./pages/Products";
 import { CartProvider } from "./context/CartContext";
 import { Checkout } from "./pages/Checkout";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
             <Route path="/admin/orders" element={<></>} />
           </Route>
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </CartProvider>
   )
